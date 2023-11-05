@@ -90,5 +90,115 @@ def scrapeBreadStuff(cheapie_scraper):
         scraper(cheapie_scraper, endpoint, header)
         i += 1
 
+def scrapeCooledFrozenStuff(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/kuehlung-und-tiefkuehlkost.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/kuehlung-und-tiefkuehlkost.onlyProduct.html?pageNumber={str(i)}&_1699180107923"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeNutrients(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/nahrungsmittel.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/nahrungsmittel.onlyProduct.html?pageNumber={str(i)}&_1699180251054"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeCoffeeTea(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/kaffee-und-tee.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/kaffee-und-tee.onlyProduct.html?pageNumber={str(i)}&_1699180370726"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeDrinks(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/getraenke.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/getraenke.onlyProduct.html?pageNumber={str(i)}&_1699180532588"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeSweetsSnacks(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/suessigkeiten-und-snacks.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/suessigkeiten-und-snacks.onlyProduct.html?pageNumber={str(i)}&_1699180617805"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeDrugstoreCosmetics(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/drogerie-und-kosmetik.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/drogerie-und-kosmetik.onlyProduct.html?pageNumber={str(i)}&_1699180796850"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeBabyChildStuff(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/baby-und-kind.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/baby-und-kind.onlyProduct.html?pageNumber={str(i)}&_1699180897291"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeHouseholdStuff(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/haushalt.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/haushalt.onlyProduct.html?pageNumber={str(i)}&_1699181427160"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapePetStuff(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/tierbedarf.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/tierbedarf.onlyProduct.html?pageNumber={str(i)}&_1699181484213"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapePrepaidCards(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/aldi-guthaben-und-geschenkkarten.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/aldi-guthaben-und-geschenkkarten.onlyProduct.html?pageNumber={str(i)}&_1699181616856"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
+def scrapeGrillingStuff(cheapie_scraper):
+    i = 0
+    header['referer'] = "https://www.aldi-sued.de/de/produkte/produktsortiment/grillen.html"
+
+    while i < 20:
+        endpoint = f"https://www.aldi-sued.de/de/produkte/produktsortiment/grillen.onlyProduct.html?pageNumber={str(i)}&_1699181818370"
+        scraper(cheapie_scraper, endpoint, header)
+        i += 1
+
 def scrapeStarter(cheapie_scraper):
     scrapeBreadStuff(cheapie_scraper)
+    scrapeCooledFrozenStuff(cheapie_scraper)
+    scrapeNutrients(cheapie_scraper)
+    scrapeCoffeeTea(cheapie_scraper)
+    scrapeDrinks(cheapie_scraper)
+    scrapeSweetsSnacks(cheapie_scraper)
+    scrapeDrugstoreCosmetics(cheapie_scraper)
+    scrapeBabyChildStuff(cheapie_scraper)
+    scrapeHouseholdStuff(cheapie_scraper)
+    scrapePetStuff(cheapie_scraper)
+    scrapePrepaidCards(cheapie_scraper)
+    scrapeGrillingStuff(cheapie_scraper)

@@ -5,7 +5,7 @@ import markets.germany.aldi.aldi_sued.aldi_sued_scraper as aldi_sued_de
 class CheapieScraper():
     def __init__(self):
         self.cheapie_db = None
-        self.cheapie_version = "2023.11.0.1"
+        self.cheapie_version = "2023.11.0.2"
 
     def connectToDb(self):
         pwd = getpass("Please type in the password for cheapie-scraper: ")
