@@ -1,11 +1,12 @@
 import mysql.connector
 from getpass import getpass
 import markets.germany.aldi.aldi_sued.aldi_sued_scraper as aldi_sued_de
+import markets.germany.rewe.rewe_scraper as rewe_de
 
 class CheapieScraper():
     def __init__(self):
         self.cheapie_db = None
-        self.cheapie_version = "2023.11.0.2"
+        self.cheapie_version = "2023.11.1.0"
 
     def connectToDb(self):
         pwd = getpass("Please type in the password for cheapie-scraper: ")
@@ -19,6 +20,7 @@ class CheapieScraper():
 
         print(self.cheapie_db)
 
+        rewe_de.scrapeMarkets(self)
         aldi_sued_de.scrapeStarter(self)
 
 cheapie_scraper = CheapieScraper()

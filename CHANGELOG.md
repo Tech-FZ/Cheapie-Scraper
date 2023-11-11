@@ -1,5 +1,9 @@
 # Cheapie Scraper Changelog
 
+## Version 2023.11.1.0
+
+- The REWE scraper for Germany is in the works, but doesn't work yet.
+
 ## Version 2023.11.0.2
 
 - The ALDI SÜD scraper is now covering most of what the company offers across Germany.
