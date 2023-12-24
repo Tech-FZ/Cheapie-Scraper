@@ -1,5 +1,9 @@
 # Cheapie Scraper Changelog
 
+## Version 2023.12.0.0
+
+- The scraper has been made more comfortable and secure.
+
 ## Version 2023.11.1.0
 
 - The REWE scraper for Germany is in the works, but doesn't work yet.
