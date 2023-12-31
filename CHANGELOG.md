@@ -3,6 +3,7 @@
 ## Version 2023.12.0.1
 
 - The scraper is now ended when you tell it to do so.
+- Started working on a new scraper for REWE.
 
 ## Version 2023.12.0.0
 

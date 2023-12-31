@@ -24,7 +24,8 @@ class CheapieScraper():
                 aldi_sued_de.scrapeStarter(self)
 
             elif chosen_market == 2:
-                rewe_de.scrapeMarkets(self)
+                chosen_market = 2
+                rewe_de.scrapeStarter(self)
 
             elif chosen_market == 3:
                 print("Bye.")
@@ -32,11 +33,9 @@ class CheapieScraper():
 
             else:
                 print("Not a valid option")
-                self.chooseShopDe()
 
         except TypeError:
             print("Not a valid option")
-            self.chooseShopDe()
 
     def connectToDb(self):
         tries = 3
