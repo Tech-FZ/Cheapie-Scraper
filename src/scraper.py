@@ -7,7 +7,7 @@ import sys
 class CheapieScraper():
     def __init__(self):
         self.cheapie_db = None
-        self.cheapie_version = "2023.12.0.0"
+        self.cheapie_version = "2023.12.0.1"
 
     def chooseShopDe(self):
         print("Market list")
@@ -34,7 +34,7 @@ class CheapieScraper():
                 print("Not a valid option")
                 self.chooseShopDe()
 
-        except:
+        except TypeError:
             print("Not a valid option")
             self.chooseShopDe()
 

@@ -1,5 +1,9 @@
 # Cheapie Scraper Changelog
 
+## Version 2023.12.0.1
+
+- The scraper is now ended when you tell it to do so.
+
 ## Version 2023.12.0.0
 
 - The scraper has been made more comfortable and secure.
