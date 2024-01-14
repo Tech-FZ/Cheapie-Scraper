@@ -12,19 +12,24 @@ import markets.germany.rewe.rewe_scraper_citylist as citylist
 import core.data_includer as dataincl
 
 def scraper(cheapie_scraper, market_data):
+    print("Function could be run")
     product_names = []
     product_prices = []
     product_pics = []
 
-    driver = webdriver.Chrome()
+    driver = webdriver.Firefox()
+    print("Webdriver: Firefox")
 
     try:
-        driver.get(f"https://www.rewe.de/angebote/{str(market_data[2]).lower()}/{int(market_data[3])}/rewe-markt-{str(market_data[1]).lower().replace(' ', '-')}")
+        print("Trying markt")
+        driver.get(f"https://www.rewe.de/angebote/{str(market_data[2]).lower()}/{str(market_data[3])}/rewe-markt-{str(market_data[1]).lower().replace(' ', '-')}")
 
     except:
-        driver.get(f"https://www.rewe.de/angebote/{str(market_data[2]).lower()}/{int(market_data[3])}/rewe-center-{str(market_data[1]).lower().replace(' ', '-')}")
+        print("Trying center")
+        driver.get(f"https://www.rewe.de/angebote/{str(market_data[2]).lower()}/{str(market_data[3])}/rewe-center-{str(market_data[1]).lower().replace(' ', '-')}")
 
     time.sleep(5)
+    print("Trying to navigate")
 
     try:
         acceptframe = driver.find_element_by_xpath("/html/body/div[3]/div[0]/div[0]/div[1]/div[0]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/button[1]").click()
@@ -49,14 +54,19 @@ def scrapeStarter(cheapie_scraper):
 
         for x in exec_res2:
             print(x)
-            to_insert = x
+            to_insert = list(x)
             
             for city in citylist.citylist:
+                print(city)
                 i = 0
                 
                 while i < len(city[1]):
+                    print(city[1][i])
                     if city[1][i] == x[2]:
                         to_insert[2] = city[0]
                         break
 
-            scraper(cheapie_scraper, to_insert)
+                    i += 1
+
+                print("Scraping")
+                scraper(cheapie_scraper, to_insert)
