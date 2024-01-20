@@ -17,8 +17,8 @@ def scraper(cheapie_scraper, market_data):
     product_prices = []
     product_pics = []
 
-    driver = webdriver.Firefox()
-    print("Webdriver: Firefox")
+    driver = webdriver.Chrome()
+    print("Webdriver: Chrome")
 
     try:
         print("Trying markt")

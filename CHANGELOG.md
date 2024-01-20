@@ -1,5 +1,9 @@
 # Cheapie Scraper Changelog
 
+## Version 2024.1.0.1
+
+- REWE scraper web driver changed back to Chrome.
+
 ## Version 2024.1.0.0
 
 - The scraper now has a GUI for choosing subscrapers.

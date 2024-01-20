@@ -8,7 +8,7 @@ import sys
 class CheapieScraper():
     def __init__(self):
         self.cheapie_db = None
-        self.cheapie_version = "2024.1.0.0"
+        self.cheapie_version = "2024.1.0.1"
 
     def chooseShopDe(self):
         print("Market list")
