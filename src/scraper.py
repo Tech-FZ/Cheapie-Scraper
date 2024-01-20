@@ -75,7 +75,7 @@ class CheapieScraper():
 cheapie_scraper = CheapieScraper()
 
 print(f"""
-    Cheapie Scraper {cheapie_scraper.cheapie_version} Copyright (C) 2023 Nicolas Lucien and Cheapie contributors
+    Cheapie Scraper {cheapie_scraper.cheapie_version} Copyright (C) 2023 - 2024 Nicolas Lucien and Cheapie contributors
     This program comes with ABSOLUTELY NO WARRANTY.
     This is free software, and you are welcome to redistribute it
     under certain conditions. See the LICENSE file for details.

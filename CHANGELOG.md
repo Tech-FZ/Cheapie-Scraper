@@ -3,6 +3,7 @@
 ## Version 2024.1.0.1
 
 - REWE scraper web driver changed back to Chrome.
+- License updated for 2024.
 
 ## Version 2024.1.0.0
 

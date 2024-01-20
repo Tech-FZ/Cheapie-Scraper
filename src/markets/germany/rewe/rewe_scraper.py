@@ -70,3 +70,4 @@ def scrapeStarter(cheapie_scraper):
 
                 print("Scraping")
                 scraper(cheapie_scraper, to_insert)
+                break
