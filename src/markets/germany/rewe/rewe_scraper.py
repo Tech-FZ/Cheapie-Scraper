@@ -28,15 +28,46 @@ def scraper(cheapie_scraper, market_data):
         print("Trying center")
         driver.get(f"https://www.rewe.de/angebote/{str(market_data[2]).lower()}/{str(market_data[3])}/rewe-center-{str(market_data[1]).lower().replace(' ', '-')}")
 
-    time.sleep(5)
+    time.sleep(10)
     print("Trying to navigate")
 
     try:
-        acceptframe = driver.find_element_by_xpath("/html/body/div[3]/div[0]/div[0]/div[1]/div[0]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/button[1]").click()
+        #acceptframe = driver.find_elements_by_xpath("/html/body/div[3]/div[0]/div[0]/div[1]/div[0]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/button[1]").get(0).click()
+        #acceptframe = driver.find_element(By.CLASS_NAME("cvYqei")).click()
+        #cookiewin = driver.find_element(By.ID("uc-center-container"))
+        #acceptbtn = cookiewin.find_element(By.CLASS_NAME("cvYqei")).click()
+        acceptframe = driver.find_elements(By.CSS_SELECTOR("button.sc-dcJsrY"))
+        acceptbtn = acceptframe.get(1)
+        acceptbtn.click()
         print("Had to accept cookies")
 
     except:
         print("Cookies accepted")
+
+    time.sleep(3)
+    sales_path = "/html/body/main/div[1]/div[1]/div[0]/div[1]"
+    first_sector_path = sales_path + "/div[1]/div[1]" #/div[1]
+
+    try:
+        info = driver.find_elements_by_xpath(first_sector_path + "/div[1]")
+        sale_count = 0
+        sale_count = len(info)
+
+        while True:
+            try:
+                show_more = driver.find_element_by_xpath(first_sector_path + "/div[2]/button")
+                show_more_info = show_more.text
+                show_more_info_split = show_more_info.split(" ")
+                sale_count += int(show_more_info_split[0])
+                show_more.click()
+
+            except:
+                break
+
+
+
+    except:
+        pass
 
 def scrapeStarter(cheapie_scraper):
     db_cursor = cheapie_scraper.cheapie_db.cursor()
