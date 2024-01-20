@@ -46,28 +46,25 @@ def scrapeStarter(cheapie_scraper):
     for x in exec_res1:
         print(x)
 
-    j = 0
+    db_cursor.execute(f"SELECT BranchID, BranchAddress, BranchCity, CompanyInternalID FROM Branch WHERE Company = {exec_res1[0][0]}")
+    exec_res2 = db_cursor.fetchall()
 
-    while j < len(exec_res1):
-        db_cursor.execute(f"SELECT BranchID, BranchAddress, BranchCity, CompanyInternalID FROM Branch WHERE Company = {exec_res1[j][0]}")
-        exec_res2 = db_cursor.fetchall()
-
-        for x in exec_res2:
-            print(x)
-            to_insert = list(x)
+    for x in exec_res2:
+        print(x)
+        to_insert = list(x)
             
-            for city in citylist.citylist:
-                print(city)
-                i = 0
+        for city in citylist.citylist:
+            print(city)
+            i = 0
                 
-                while i < len(city[1]):
-                    print(city[1][i])
-                    if city[1][i] == x[2]:
-                        to_insert[2] = city[0]
-                        break
+            while i < len(city[1]):
+                print(city[1][i])
+                if city[1][i] == x[2]:
+                    to_insert[2] = city[0]
+                    break
 
-                    i += 1
+                i += 1
 
-                print("Scraping")
-                scraper(cheapie_scraper, to_insert)
-                break
+            print("Scraping")
+            scraper(cheapie_scraper, to_insert)
+            break
