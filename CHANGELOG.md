@@ -3,6 +3,7 @@
 ## Version 2024.1.0.2
 
 - Tried to fix REWE scraper, ran into another error.
+- Some stuff must be managed manually there.
 
 ## Version 2024.1.0.1
 

@@ -10,6 +10,7 @@ import matplotlib as mlt
 import matplotlib.pyplot as plt
 import markets.germany.rewe.rewe_scraper_citylist as citylist
 import core.data_includer as dataincl
+import core.usrfile_handler as usrfiles
 import datetime
 
 def cookieExpirationDateFinder(cheapie_scraper):
@@ -24,6 +25,8 @@ def scraper(cheapie_scraper, market_data):
     product_pics = []
     cookieExpire = cookieExpirationDateFinder(cheapie_scraper=cheapie_scraper)
 
+    #options = webdriver.ChromeOptions()
+    #options.add_argument(f"user-data-dir={usrfiles.chromeFileDir()}")
     driver = webdriver.Chrome()
     print("Webdriver: Chrome")
 
@@ -35,7 +38,7 @@ def scraper(cheapie_scraper, market_data):
         print("Trying center")
         driver.get(f"https://www.rewe.de/angebote/{str(market_data[2]).lower()}/{str(market_data[3])}/rewe-center-{str(market_data[1]).lower().replace(' ', '-')}")
 
-    driver.add_cookie({
+    """ driver.add_cookie({
         "name": "ar_debug",
         "value": "1",
         "domain": ".pinterest.com",
@@ -54,11 +57,11 @@ def scraper(cheapie_scraper, market_data):
         "path": "/",
         "sameSite": "None",
         "secure": True
-        })
-
+        }) """
     
-    time.sleep(10)
-    print("Trying to navigate")
+    #time.sleep(10)
+    print("Do the CAPTCHA and accept the cookies if required.")
+    thing = input("When you're ready, press any key.")
 
     try:
         #acceptframe = driver.find_element_by_xpath("/div/div/div[2]/div/div[2]/div/div[2]/div/div[1]/div/button[2]").send_keys(Keys.ENTER)
