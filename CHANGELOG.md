@@ -1,5 +1,9 @@
 # Cheapie Scraper Changelog
 
+## Version 2024.1.0.2
+
+- Tried to fix REWE scraper, ran into another error.
+
 ## Version 2024.1.0.1
 
 - REWE scraper web driver changed back to Chrome.

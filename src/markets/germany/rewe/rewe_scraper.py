@@ -10,12 +10,19 @@ import matplotlib as mlt
 import matplotlib.pyplot as plt
 import markets.germany.rewe.rewe_scraper_citylist as citylist
 import core.data_includer as dataincl
+import datetime
+
+def cookieExpirationDateFinder(cheapie_scraper):
+    todayDate = datetime.datetime.now()
+    expiresAt = todayDate + datetime.timedelta(days=365 * 2)
+    return expiresAt
 
 def scraper(cheapie_scraper, market_data):
     print("Function could be run")
     product_names = []
     product_prices = []
     product_pics = []
+    cookieExpire = cookieExpirationDateFinder(cheapie_scraper=cheapie_scraper)
 
     driver = webdriver.Chrome()
     print("Webdriver: Chrome")
@@ -28,17 +35,45 @@ def scraper(cheapie_scraper, market_data):
         print("Trying center")
         driver.get(f"https://www.rewe.de/angebote/{str(market_data[2]).lower()}/{str(market_data[3])}/rewe-center-{str(market_data[1]).lower().replace(' ', '-')}")
 
+    driver.add_cookie({
+        "name": "ar_debug",
+        "value": "1",
+        "domain": ".pinterest.com",
+        "expires": f"{cookieExpire.year}-{cookieExpire.month}-{cookieExpire.day}T{cookieExpire.hour}:{cookieExpire.minute}:{cookieExpire.second}.000Z",
+        "httpOnly": True,
+        "path": "/",
+        "sameSite": "None",
+        "secure": True
+        })
+
+    driver.add_cookie({
+        "name": "_pinterest_ct_ua",
+        "value": "\"TWc9PSZPdlNrS0JkcXI3cFdDRTNVRXg0YTBNSFMzWkYxRU9McCtQQWlaRVBaSU5UVUwxYjNkZU9WZ2pXcGYydndCNW9jYjdhOHMzQ0xPdnVzd3JYcUM2c09uNVJ6ejl0dnFJQXVMZDZ6VzlsUVV6WT0mc0FoVEMwNDZNNEpQZVlYQW9vRlg5ODR1elA0PQ==\"",
+        "domain": "ct.pinterest.com",
+        "expires": f"{cookieExpire.year}-{cookieExpire.month}-{cookieExpire.day}T{cookieExpire.hour}:{cookieExpire.minute}:{cookieExpire.second}.000Z",
+        "path": "/",
+        "sameSite": "None",
+        "secure": True
+        })
+
+    
     time.sleep(10)
     print("Trying to navigate")
 
     try:
-        #acceptframe = driver.find_elements_by_xpath("/html/body/div[3]/div[0]/div[0]/div[1]/div[0]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/button[1]").get(0).click()
+        #acceptframe = driver.find_element_by_xpath("/div/div/div[2]/div/div[2]/div/div[2]/div/div[1]/div/button[2]").send_keys(Keys.ENTER)
         #acceptframe = driver.find_element(By.CLASS_NAME("cvYqei")).click()
         #cookiewin = driver.find_element(By.ID("uc-center-container"))
         #acceptbtn = cookiewin.find_element(By.CLASS_NAME("cvYqei")).click()
-        acceptframe = driver.find_elements(By.CSS_SELECTOR("button.sc-dcJsrY"))
-        acceptbtn = acceptframe.get(1)
-        acceptbtn.click()
+        #acceptframe = driver.find_elements(By.CSS_SELECTOR("button.sc-dcJsrY"))
+        #acceptbtn = acceptframe.get(1)
+        #acceptbtn.click()
+        #cookiewin = driver.find_element(By.ID("uc-center-container"))
+        #buttons = cookiewin.find_element(By.CSS_SELECTOR("div.sc-eeDRCY.iURToW"))
+        #acceptbtn = buttons.get(1).click()
+        #denybtn = driver.find_element(By.XPATH("/div/div/div[2]/div/div[2]/div/div[1]/div/div/div/div/div/div[3]/div/div[2]/a[2]"))
+        #driver.get(denybtn.get_attribute("href"))
+        #denybtn.send_keys(Keys.ENTER)
         print("Had to accept cookies")
 
     except:
