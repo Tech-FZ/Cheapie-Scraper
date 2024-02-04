@@ -84,25 +84,26 @@ def scraper(cheapie_scraper, market_data):
 
     time.sleep(3)
     sales_path = "/html/body/main/div[1]/div[1]/div[0]/div[1]"
-    first_sector_path = sales_path + "/div[1]/div[1]" #/div[1]
+    sales_path = "/html/body/main/div[2]/div[2]/div/div[2]/"
+    first_sector_path = sales_path + "/div[2]/div[2]" #/div[1]
 
     try:
-        info = driver.find_elements_by_xpath(first_sector_path + "/div[1]")
+        info = driver.find_element(By.XPATH, first_sector_path + "/div[2]")
         sale_count = 0
         sale_count = len(info)
 
         while True:
             try:
-                show_more = driver.find_element_by_xpath(first_sector_path + "/div[2]/button")
-                show_more_info = show_more.text
-                show_more_info_split = show_more_info.split(" ")
-                sale_count += int(show_more_info_split[0])
-                show_more.click()
+                show_more = driver.find_element(By.XPATH, first_sector_path + "/div[3]/button")
+
+                if show_more.is_displayed():
+                    show_more_info = show_more.text
+                    show_more_info_split = show_more_info.split(" ")
+                    sale_count += int(show_more_info_split[0])
+                    show_more.click()
 
             except:
                 break
-
-
 
     except:
         pass

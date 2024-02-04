@@ -1,5 +1,9 @@
 # Cheapie Scraper Changelog
 
+## Version 2024.2.0.0
+
+- The REWE scraper has been edited. Apparently, Chrome stays open for longer because of this.
+
 ## Version 2024.1.0.2
 
 - Tried to fix REWE scraper, ran into another error.
