@@ -22,9 +22,9 @@ def cookieExpirationDateFinder(cheapie_scraper):
 
 def scraper(cheapie_scraper, market_data):
     print("Function could be run")
-    product_names = []
-    product_prices = []
-    product_pics = []
+    #product_names = []
+    #product_prices = []
+    #product_pics = []
     cookieExpire = cookieExpirationDateFinder(cheapie_scraper=cheapie_scraper)
 
     #options = webdriver.ChromeOptions()
@@ -108,16 +108,36 @@ def scraper(cheapie_scraper, market_data):
             article_name_el = driver.find_element(By.XPATH, article_name_path)
             article_name = article_name_el.text
             print(article_name)
+            #product_names.append(article_name)
 
             article_img_path = article_path + "/div[2]/div[1]/img"
             article_img_el = driver.find_element(By.XPATH, article_img_path)
             article_img_src = article_img_el.get_attribute("src")
             print(article_img_src)
+            #product_pics.append(article_img_src)
 
             article_price_path = article_path + "/div[3]/div/div/div[2]"
             article_price_el = driver.find_element(By.XPATH, article_price_path)
             article_price = article_price_el.text
             print(article_price)
+            article_price_nocurr = article_price.replace(" €", "")
+            article_price_wdot = article_price_nocurr.replace(",", ".")
+            #product_prices.append(article_price_wdot)
+
+            db_cursor = cheapie_scraper.cheapie_db.cursor()
+            db_cursor.execute(f"SELECT ProductID, ProductName FROM Product WHERE ProductName = '{article_name}'")
+            exec_res3 = db_cursor.fetchall()
+
+            if len(exec_res3) > 0:
+                for y in exec_res3:
+                    print(y)
+
+                    dataincl.insertStock(cheapie_scraper, y[0], article_price_wdot, market_data[0], "€")
+
+            else:
+                dataincl.addProduct(cheapie_scraper, article_name, article_price_wdot, article_img_src, market_data[0], "€")
+            
+            print(exec_res3)
 
             i += 1
 
