@@ -83,14 +83,15 @@ def scraper(cheapie_scraper, market_data):
         print("Cookies accepted")
 
     time.sleep(3)
-    sales_path = "/html/body/main/div[1]/div[1]/div[0]/div[1]"
+    #sales_path = "/html/body/main/div[1]/div[1]/div[0]/div[1]"
     sales_path = "/html/body/main/div[2]/div[2]/div/div[2]/"
-    first_sector_path = sales_path + "/div[2]/div[2]" #/div[1]
+    first_sector_path = sales_path + "div[2]/div[2]" #/div[1]
 
     try:
         info = driver.find_element(By.XPATH, first_sector_path + "/div[2]")
         sale_count = 0
         sale_count = len(info)
+        print(sale_count)
 
         while True:
             try:
@@ -101,6 +102,10 @@ def scraper(cheapie_scraper, market_data):
                     show_more_info_split = show_more_info.split(" ")
                     sale_count += int(show_more_info_split[0])
                     show_more.click()
+                    print(sale_count)
+
+                else:
+                    break
 
             except:
                 break
