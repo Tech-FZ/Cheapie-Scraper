@@ -3,6 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import csv
 import pandas as pd
 import numpy as np
@@ -88,12 +90,38 @@ def scraper(cheapie_scraper, market_data):
     first_sector_path = sales_path + "div[2]/div[2]" #/div[1]
 
     try:
-        info = driver.find_element(By.XPATH, first_sector_path + "/div[2]")
-        sale_count = 0
-        sale_count = len(info)
+        info = driver.find_elements(By.XPATH, first_sector_path + "/div[2]")
+        #info_sales = info.find_elements(By.TAG_NAME, "span")
+        print("First, click all 'Show more' buttons on the first section!")
+        sale_count = int(input("How many articles are shown? "))
+        #sale_count = len(info_sales)
         print(sale_count)
+        i = 1
 
-        while True:
+        while i <= sale_count:
+            article_path = first_sector_path + f"/div[2]/span[{i}]/article"
+            article = driver.find_element(By.XPATH, article_path)
+            article_aria_lbl = article.get_attribute("aria-label")
+            print(article_aria_lbl)
+
+            article_name_path = article_path + "/div[2]/div[2]/h3/a"
+            article_name_el = driver.find_element(By.XPATH, article_name_path)
+            article_name = article_name_el.text
+            print(article_name)
+
+            article_img_path = article_path + "/div[2]/div[1]/img"
+            article_img_el = driver.find_element(By.XPATH, article_img_path)
+            article_img_src = article_img_el.get_attribute("src")
+            print(article_img_src)
+
+            article_price_path = article_path + "/div[3]/div/div/div[2]"
+            article_price_el = driver.find_element(By.XPATH, article_price_path)
+            article_price = article_price_el.text
+            print(article_price)
+
+            i += 1
+
+        """ while True:
             try:
                 show_more = driver.find_element(By.XPATH, first_sector_path + "/div[3]/button")
 
@@ -101,6 +129,8 @@ def scraper(cheapie_scraper, market_data):
                     show_more_info = show_more.text
                     show_more_info_split = show_more_info.split(" ")
                     sale_count += int(show_more_info_split[0])
+                    wait = WebDriverWait(driver, 10)
+                    wait.until(EC.element_to_be_clickable((By.XPATH, first_sector_path + "/div[3]/button"))).click()
                     show_more.click()
                     print(sale_count)
 
@@ -108,7 +138,7 @@ def scraper(cheapie_scraper, market_data):
                     break
 
             except:
-                break
+                break """
 
     except:
         pass

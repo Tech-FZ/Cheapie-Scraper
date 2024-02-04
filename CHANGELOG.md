@@ -2,7 +2,9 @@
 
 ## Version 2024.2.0.0
 
-- The REWE scraper has been edited. Apparently, Chrome stays open for longer because of this.
+- The REWE scraper has been edited.
+- Heavily edited as the REWE scraper could be fixed by reverting even more automation.
+- Finally, the REWE scraper is fixed and I can now get to work.
 
 ## Version 2024.1.0.2
 
